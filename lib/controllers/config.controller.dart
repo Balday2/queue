@@ -12,10 +12,11 @@ class ConfigController extends GetxController {
 
     AwesomeNotifications().createNotification(
       content: NotificationContent(
-          id: 1,
-          channelKey: 'test_channel',
-          title: 'Title of the notification.',
-          body: 'Hello! This is the body of the notification.'),
+        id: 1,
+        channelKey: 'test_channel',
+        title: 'Title of the notification.',
+        body: 'Hello! This is the body of the notification.'
+      ),
     );
 
     AwesomeNotifications().actionStream.listen((event) {

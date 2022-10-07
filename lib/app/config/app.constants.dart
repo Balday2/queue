@@ -1,6 +1,9 @@
 
+// import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:queue/controllers/auth.controller.dart';
 
 class AppConst {
   static const String userKey = 'mykey';
@@ -9,14 +12,15 @@ class AppConst {
 
   // FIREBASE
   static final fireAuth = FirebaseAuth.instance;
-  // static final fireStorage = FirebaseStorage.instance;
-  // static final fireStore = FirebaseFirestore.instance;
+  static final fireStore = FirebaseFirestore.instance;
 
   // CONTROLLERS
-  // static final authController = AuthController.instance;
+  static final authController = AuthController.instance;
 
 
   /// APP COLORS 
   static Color blue = Colors.blueAccent.withOpacity(0.8);
-  static Color green = Colors.greenAccent.withOpacity(0.8);
+  static Color green = Colors.greenAccent;
+  static Color yellow = const Color(0xFFFEE451);
+
 }
