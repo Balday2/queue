@@ -6,6 +6,7 @@ class AppConst {
   static const String userKey = 'mykey';
   static const String userRole = 'admin';
   static const String url = 'https://hello-world.com/api';
+  static const String mapToken = 'AIzaSyDFiBVbZCRJFqy5l-7tAikalW9GVTG16Y8';
 
   // FIREBASE
   static final fireAuth = FirebaseAuth.instance;
