@@ -1,4 +1,4 @@
-package com.example.queue
+package com.mcscanner
 
 import io.flutter.embedding.android.FlutterActivity
 
