@@ -39,13 +39,16 @@ dependencies:
   firebase_core: ^1.22.0
   firebase_auth: ^3.9.0
   velocity_x: 
-  get: 
+  get:
   google_fonts: 
   google_maps_flutter: ^2.2.0
   flutter_map: 
   geolocator: ^9.0.1
   awesome_notifications:
   cloud_firestore: ^3.5.0
+  location:
+  flutter_polyline_points:
+  url_launcher:
 
 dev_dependencies:
   flutter_test:

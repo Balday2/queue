@@ -43,7 +43,7 @@ class ServiceDetails extends StatelessWidget {
               WidgetUi().button(
                 child: "CALL".text.white.size(20.0).xl2.make(), 
                 width: Get.width, 
-                bColor:  AppConst.green,
+                color:  AppConst.green,
                 overColor: Vx.white, 
                 shape: 20.0, 
                 onPressed: null

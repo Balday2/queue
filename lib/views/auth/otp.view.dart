@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:queue/app/app.helpers.dart';
 import 'package:queue/app/config/app.constants.dart';
-import 'package:queue/views/home/home.view.dart';
+import 'package:queue/app/config/app.regex.dart';
+import 'package:queue/controllers/auth.controller.dart';
+import 'package:queue/views/auth/auth.widget.dart';
+import 'package:queue/widgets/widgets.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 class OtpView extends StatefulWidget {
@@ -12,8 +16,20 @@ class OtpView extends StatefulWidget {
 }
 
 class _OtpViewState extends State<OtpView> {
+  final authCtrl = Get.find<AuthController>();
+  final ui = WidgetUi();
 
-  String phoneNumber = "";
+  final _formKey = GlobalKey<FormState>();
+  final otp = TextEditingController();
+
+  Future<dynamic> submit() async {
+      FocusScope.of(context).requestFocus(FocusNode());
+      if (!_formKey.currentState!.validate()) return;
+      _formKey.currentState!.save();
+        await authCtrl.verifyOtp(otp.text);
+  }
+  
+  String otpInput = "";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,34 +49,24 @@ class _OtpViewState extends State<OtpView> {
           ),
           Column(
             children: [
-              Container(
-                height: 50.0,
-                width: Get.width/1.2,
-                color: Vx.gray300,
-                child: TextField(
-                  keyboardType: TextInputType.phone,
-                  textAlign: TextAlign.center,
-                  style: const TextStyle(
+
+              SizedBox(
+                  width: Get.width/1.2,
+                  child: Form(
+                    key: _formKey,
+                    child: AuthWidget().inputForm(
+                      "●●●●●●", 
+                      textAlign: TextAlign.center,
                       letterSpacing: 7.0,
-                      fontSize: 20.0,
-                      height: 1.3
+                      nextInput: TextInputAction.next, 
+                      validate: (v) => validator(v!, otpPattern),
+                      controller: otp, 
+                      onChange:(_) {},
+                      type: TextInputType.number,
                     ),
-                  decoration: const InputDecoration(
-                    border: InputBorder.none,
-                    hintText: "......",
-                    hintStyle: TextStyle(
-                      letterSpacing: 7.0,
-                      fontSize: 40.0,
-                    )
                   ),
-                  onChanged: (value){
-                    setState(() {
-                      phoneNumber = value;
-                    });
-                    print(value);
-                  },
                 ),
-              ),
+              
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
                 child: Center(
@@ -74,15 +80,23 @@ class _OtpViewState extends State<OtpView> {
               )
             ],
           ),
-          [
-            "Terminé".text.size(20.0).white.make(),
-            10.widthBox,
-            const Icon(Icons.check, color: Vx.white, size: 30.0,)
-          ].hStack()
-            .pSymmetric(h: 30,v: 15).box.color(AppConst.green).withRounded(value: 50.0)
-            .make().onInkTap(() async {
-              Get.to(() => const HomeView());
-            })
+
+          Obx(() {
+              return ui.button(
+                child: [
+                  "Terminé".text.size(20.0).white.make(),
+                  10.widthBox,
+                  const Icon(Icons.check, color: Vx.white, size: 30.0,)
+                ].hStack().pSymmetric(h: 10),
+                color: AppConst.green,
+                overColor: Colors.white,
+                isLoading: authCtrl.loading.value,
+                height: 70.0,
+                shape: 60.0,
+                onPressed: submit
+              );
+            }
+          )
         ],
       ),
     );

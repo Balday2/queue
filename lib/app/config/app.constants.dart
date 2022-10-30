@@ -9,6 +9,7 @@ class AppConst {
   static const String userKey = 'mykey';
   static const String userRole = 'admin';
   static const String url = 'https://hello-world.com/api';
+  static const String mapToken = 'AIzaSyDFiBVbZCRJFqy5l-7tAikalW9GVTG16Y8';
 
   // FIREBASE
   static final fireAuth = FirebaseAuth.instance;
@@ -20,7 +21,7 @@ class AppConst {
 
   /// APP COLORS 
   static Color blue = Colors.blueAccent.withOpacity(0.8);
-  static Color green = Colors.greenAccent;
+  static Color green = const Color(0xFF1fcecb);
   static Color yellow = const Color(0xFFFEE451);
 
 }

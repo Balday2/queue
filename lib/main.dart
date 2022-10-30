@@ -1,7 +1,13 @@
 import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:get/instance_manager.dart';
 import 'package:get/route_manager.dart';
+import 'package:queue/controllers/auth.controller.dart';
+import 'package:queue/controllers/user.controller.dart';
+import 'package:queue/views/auth/otp.view.dart';
+import 'package:queue/views/auth/phone_number.view.dart';
+import 'package:queue/views/home/home.view.dart';
 import 'package:queue/widgets/welcome.dart';
 import 'app/firebase_options.dart';
 
@@ -28,7 +34,36 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       theme: ThemeData(fontFamily: 'Nunito-ExtraBold'),
-      home: WelcomeWidget(),
+      debugShowCheckedModeBanner: false,
+      initialRoute: '/',
+      getPages: [
+        GetPage(
+          name:"/",
+          page: () =>  WelcomeWidget()
+        ),
+        GetPage(
+          name: "/phone",
+          page: () =>  const PhoneNumberView(),
+          binding: BindingsBuilder(() {
+            Get.lazyPut<AuthController>(() => AuthController());
+          })
+        ),
+        GetPage(
+          name: "/otp",
+          page: () =>  const OtpView(),
+          binding: BindingsBuilder(() {
+            Get.lazyPut<AuthController>(() => AuthController());
+            Get.put(UserController(), permanent: true);
+          })
+        ),
+        GetPage(
+          name: "/home",
+          page: () =>  const HomeView(),
+          binding: BindingsBuilder(() {
+            // Get.lazyPut<AuthController>(() => AuthController());
+          })
+        ),
+      ]
     );
   }
 }
