@@ -200,7 +200,7 @@ makePolilyne(LatLng pointB) async {
 
   showMarkers(List<ServiceModel> markers) async {
       final markIcon = await BitmapDescriptor.fromAssetImage(
-        const ImageConfiguration(size: Size(20.0, 20.0), devicePixelRatio: 1.2),
+        const ImageConfiguration(size: Size(5.0, 5.0), devicePixelRatio: 0.5),
         AppAsset.mapPin
       );
       for (var item in markers) {

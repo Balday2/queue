@@ -1,12 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_vector_icons/flutter_vector_icons.dart';
-import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:queue/app/config/app.asset.dart';
 import 'dart:ui' as ui;
-import 'package:queue/app/config/app.constants.dart';
-import 'package:queue/controllers/config.controller.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 class MapWidgets {
@@ -137,51 +133,5 @@ class MapWidgets {
         .asUint8List();
   }
 
-
-
-  /// bottom bar
-  Widget bottomBar() {
-    final configCtrl = Get.find<ConfigController>();
-    return Obx(() {
-        return Positioned(
-            bottom: 30.0,
-            right: 65,
-            left: 65,
-            child: VxBox(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-
-                    const Icon(FontAwesome.map_pin, color: Vx.gray600).p(10).box.roundedFull.color(
-                      configCtrl.bottomBarIndex.value == 0
-                        ? AppConst.green.withOpacity(0.5)
-                        : Colors.white
-                    ).make().onInkTap(() => configCtrl.bottomBarIndex.value = 0),
-
-                    const Icon(MaterialCommunityIcons.map_search, color: Vx.gray600).p(10).box.roundedFull.color(
-                      configCtrl.bottomBarIndex.value == 1
-                        ? AppConst.green.withOpacity(0.5)
-                        : Colors.white
-                    ).make().onInkTap(() => configCtrl.bottomBarIndex.value = 1),
-
-                    const Icon(MaterialCommunityIcons.file_document_outline, color: Vx.gray600).p(10).box.roundedFull.color(
-                      configCtrl.bottomBarIndex.value == 2
-                        ? AppConst.green.withOpacity(0.5)
-                        : Colors.white
-                    ).make().onInkTap(() => configCtrl.bottomBarIndex.value = 2),
-
-                    const Icon(Entypo.user, color: Vx.gray600).p(10).box.roundedFull.color(
-                      configCtrl.bottomBarIndex.value == 3
-                        ? AppConst.green.withOpacity(0.5)
-                        : Colors.white
-                    ).make().onInkTap(() => configCtrl.bottomBarIndex.value = 3)
-
-                  ],
-                ).p(5)
-              ).white.withRounded(value: 60.0).make()
-        );
-      }
-    );
-  }
 
 }

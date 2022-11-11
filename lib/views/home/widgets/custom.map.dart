@@ -74,8 +74,6 @@ class _CustomMapState extends State<CustomMap> {
             mapType: mapType
           ),
 
-          MapWidgets().bottomBar()
-
           ],
         );
       }

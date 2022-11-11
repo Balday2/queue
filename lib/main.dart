@@ -62,7 +62,7 @@ class MyApp extends StatelessWidget {
         ),
         GetPage(
           name: "/home",
-          page: () =>  const HomeView(),
+          page: () =>  HomeView(),
           binding: BindingsBuilder(() {
             Get.lazyPut<MapController>(() => MapController());
             Get.lazyPut<ConfigController>(() => ConfigController());
