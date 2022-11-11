@@ -1,6 +1,7 @@
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:queue/controllers/user.controller.dart';
 import 'package:queue/models/user.model.dart';
 
@@ -44,6 +45,10 @@ class AuthController extends GetxController {
     );
 
     if(credential.user != null){
+
+      /// use [credential.user!.uid] as user token
+      await GetStorage().write('token', credential.user!.uid.toString());
+
       /// create a new users if not exist
       UserModel user = UserModel(
         id: credential.user!.uid,

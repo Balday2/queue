@@ -1,14 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:queue/app/config/app.asset.dart';
 import 'package:queue/app/config/app.constants.dart';
 import 'package:queue/widgets/widgets.dart';
 import 'package:velocity_x/velocity_x.dart';
 
-class WelcomeWidget extends StatelessWidget {
-  WelcomeWidget({super.key});
+class WelcomeWidget extends StatefulWidget {
+  const WelcomeWidget({super.key});
 
+  @override
+  State<WelcomeWidget> createState() => _WelcomeWidgetState();
+}
+
+class _WelcomeWidgetState extends State<WelcomeWidget> {
   final ui = WidgetUi();
+  bool isLoading = false;
+
+  checkToken() async {
+    setState(() => isLoading = true);
+    var token = await GetStorage().read('token');
+    if(token != "" && token != null){
+      Get.toNamed('/home');
+    } else {
+      Get.toNamed('/phone');
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -41,10 +58,10 @@ class WelcomeWidget extends StatelessWidget {
             ].hStack().pSymmetric(h: 10),
             color: AppConst.green,
             overColor: Colors.white,
-            isLoading: false,
+            isLoading: isLoading,
             height: 70.0,
             shape: 60.0,
-            onPressed: () => Get.toNamed('/phone')
+            onPressed: () => checkToken()
           )
         ],
       ),

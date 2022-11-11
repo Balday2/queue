@@ -59,7 +59,7 @@ class _OtpViewState extends State<OtpView> {
                       textAlign: TextAlign.center,
                       letterSpacing: 7.0,
                       nextInput: TextInputAction.next, 
-                      validate: (v) => validator(v!, otpPattern),
+                      validate: (v) => AppHelper.validator(v!, otpPattern),
                       controller: otp, 
                       onChange:(_) {},
                       type: TextInputType.number,

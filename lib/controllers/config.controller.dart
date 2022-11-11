@@ -1,8 +1,10 @@
 
 import 'package:awesome_notifications/awesome_notifications.dart';
-import 'package:get/get_state_manager/get_state_manager.dart';
+import 'package:get/get.dart';
 
 class ConfigController extends GetxController {
+
+  var bottomBarIndex = 0.obs;
   void sendNotification() {
     AwesomeNotifications().isNotificationAllowed().then((isAllowed) {
       if (!isAllowed) {

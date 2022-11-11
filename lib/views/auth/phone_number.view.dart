@@ -59,7 +59,7 @@ class _PhoneNumberViewState extends State<PhoneNumberView> {
                     child: AuthWidget().inputForm(
                       "Numero de téléphone", 
                       nextInput: TextInputAction.next, 
-                      validate: (v) => validator(v!, phonePattern),
+                      validate: (v) => AppHelper.validator(v!, phonePattern),
                       controller: phone, 
                       onChange:(_) {},
                       iconL: [

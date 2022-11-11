@@ -20,7 +20,8 @@ class ServiceController extends GetxController {
       .doc(AppConst.fireAuth.currentUser!.uid)
       .collection('services')
       .add({
-        'title': serviceModel.title,
+        'name': serviceModel.name,
+        'address': serviceModel.address,
         'description': serviceModel.description,
         'phoneNumber': serviceModel.phoneNumber,
         'location': serviceModel.location,
@@ -53,7 +54,8 @@ class ServiceController extends GetxController {
       .collection('services')
       .doc(documentId)
       .update({
-        'title': serviceModel.title,
+        'name': serviceModel.name,
+        'address': serviceModel.address,
         'description': serviceModel.description,
         'phoneNumber': serviceModel.phoneNumber,
         'location': serviceModel.location,

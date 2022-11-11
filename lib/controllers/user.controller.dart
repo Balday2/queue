@@ -2,12 +2,20 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:queue/app/app.helpers.dart';
 import 'package:queue/app/config/app.constants.dart';
 import 'package:queue/models/user.model.dart';
 
 class UserController extends GetxController {
   final Rx<UserModel> _userModel = UserModel().obs;
   UserModel get user => _userModel.value;
+  var token = "".obs;
+
+  @override
+  onInit(){
+    super.onInit();
+    token.value = AppHelper.getToken();
+  }
 
   set user(UserModel value) => _userModel.value = value;
 

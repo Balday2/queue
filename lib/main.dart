@@ -3,7 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:get/instance_manager.dart';
 import 'package:get/route_manager.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:queue/controllers/auth.controller.dart';
+import 'package:queue/controllers/config.controller.dart';
+import 'package:queue/controllers/map.controller.dart';
 import 'package:queue/controllers/user.controller.dart';
 import 'package:queue/views/auth/otp.view.dart';
 import 'package:queue/views/auth/phone_number.view.dart';
@@ -13,6 +16,7 @@ import 'app/firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await GetStorage.init();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
@@ -39,7 +43,7 @@ class MyApp extends StatelessWidget {
       getPages: [
         GetPage(
           name:"/",
-          page: () =>  WelcomeWidget()
+          page: () =>  const WelcomeWidget()
         ),
         GetPage(
           name: "/phone",
@@ -60,7 +64,8 @@ class MyApp extends StatelessWidget {
           name: "/home",
           page: () =>  const HomeView(),
           binding: BindingsBuilder(() {
-            // Get.lazyPut<AuthController>(() => AuthController());
+            Get.lazyPut<MapController>(() => MapController());
+            Get.lazyPut<ConfigController>(() => ConfigController());
           })
         ),
       ]

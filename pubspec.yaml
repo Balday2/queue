@@ -49,6 +49,8 @@ dependencies:
   location:
   flutter_polyline_points:
   url_launcher:
+  get_storage: 
+  flutter_vector_icons: 
 
 dev_dependencies:
   flutter_test:
