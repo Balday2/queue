@@ -17,6 +17,7 @@ import 'app/firebase_options.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await GetStorage.init();
+  GetStorage().erase();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );

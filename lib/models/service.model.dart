@@ -34,15 +34,18 @@ class ServiceModel {
     location = docSnapshot['location'];
   }
 }
-
+{
+  'latitude': 222222,
+  'long':
+}
 final locations = [
-  const LatLng(9.600952908429162, -13.64766251295805),
-  const LatLng(9.610069521009098, -13.645762838423252),
-  const LatLng(9.606569085521244, -13.644754998385906),
-  const LatLng(9.60736213286485, -13.649661429226398),
-  const LatLng(9.604086131199178, -13.646668754518032),
-  const LatLng(9.59463976330283, -13.65808691829443),
-  const LatLng(9.586410712697031, -13.65368977189064),
+  const LatLng({"latitude": 9.600952908429162, "longitude": -13.64766251295805}),
+  const LatLng({"latitude": 9.610069521009098, "longitude": -13.645762838423252}),
+  const LatLng({"latitude": 9.606569085521244, "longitude": -13.644754998385906}),
+  const LatLng({"latitude": 9.60736213286485, "longitude": -13.649661429226398}),
+  const LatLng({"latitude": 9.604086131199178, "longitude": -13.646668754518032}),
+  const LatLng({"latitude": 9.59463976330283, "longitude": -13.65808691829443}),
+  const LatLng({"latitude": 9.586410712697031, "longitude": -13.65368977189064}),
 ];
 
 final fakeServices = [

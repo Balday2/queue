@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:queue/app/app.helpers.dart';
 import 'package:queue/app/config/app.constants.dart';
 import 'package:queue/models/user.model.dart';
+import 'package:firebase_database/firebase_database.dart';
 
 class UserController extends GetxController {
   final Rx<UserModel> _userModel = UserModel().obs;
@@ -25,11 +26,8 @@ class UserController extends GetxController {
 
   Future<bool> createNewUser(UserModel user) async {
     try {
-      await AppConst.fireStore.collection("users").doc(user.id).set({
-        "phone": user.phone,
-        "name": user.name,
-        "email": user.email,
-      });
+      await FirebaseDatabase.instance.ref("users").set(user.toJson());
+      // await AppConst.fireStore.collection("users").doc(user.id).set(user.toJson());
       return true;
     } catch (e) {
       debugPrint('[CREATE-USER-ERROR]: $e');

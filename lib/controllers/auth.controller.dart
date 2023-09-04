@@ -51,7 +51,7 @@ class AuthController extends GetxController {
 
       /// create a new users if not exist
       UserModel user = UserModel(
-        id: credential.user!.uid,
+        uid: credential.user!.uid,
         phone: phone.value
       );
       if (await Get.find<UserController>().createNewUser(user)) {

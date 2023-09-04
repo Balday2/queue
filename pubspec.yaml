@@ -51,6 +51,7 @@ dependencies:
   url_launcher:
   get_storage: 
   flutter_vector_icons: 
+  firebase_database: ^9.1.7
 
 dev_dependencies:
   flutter_test:
